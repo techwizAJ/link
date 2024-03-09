@@ -1,25 +1,26 @@
 package com.prmatch.link.models;
 
-import java.util.Objects;
+import java.util.List;
 
 public class Remittance {
 
   private String remittanceHeaderId;
   private String customerName;
-  private String invoiceNumber;
+  private List<String> invoiceNumberList;
   private double paymentAmount;
-  private String lockBoxNumber;
+  private String paymentId;
 
   public Remittance() {
   }
 
-  public Remittance(String remittanceHeaderId, String customerName, String invoiceNumber, double paymentAmount,
-      String lockBoxNumber) {
+  public Remittance(String remittanceHeaderId, String customerName, List<String> invoiceNumberList,
+      double paymentAmount,
+      String paymentId) {
     this.remittanceHeaderId = remittanceHeaderId;
     this.customerName = customerName;
-    this.invoiceNumber = invoiceNumber;
+    this.invoiceNumberList = invoiceNumberList;
     this.paymentAmount = paymentAmount;
-    this.lockBoxNumber = lockBoxNumber;
+    this.paymentId = paymentId;
   }
 
   public String getRemittanceHeaderId() {
@@ -38,12 +39,12 @@ public class Remittance {
     this.customerName = customerName;
   }
 
-  public String getInvoiceNumber() {
-    return this.invoiceNumber;
+  public List<String> getInvoiceNumber() {
+    return this.invoiceNumberList;
   }
 
-  public void setInvoiceNumber(String invoiceNumber) {
-    this.invoiceNumber = invoiceNumber;
+  public void setInvoiceNumber(List<String> invoiceNumberList) {
+    this.invoiceNumberList = invoiceNumberList;
   }
 
   public double getPaymentAmount() {
@@ -54,56 +55,12 @@ public class Remittance {
     this.paymentAmount = paymentAmount;
   }
 
-  public String getLockBoxNumber() {
-    return this.lockBoxNumber;
+  public String getpaymentId() {
+    return this.paymentId;
   }
 
-  public void setLockBoxNumber(String lockBoxNumber) {
-    this.lockBoxNumber = lockBoxNumber;
-  }
-
-  public Remittance remittanceHeaderId(String remittanceHeaderId) {
-    setRemittanceHeaderId(remittanceHeaderId);
-    return this;
-  }
-
-  public Remittance customerName(String customerName) {
-    setCustomerName(customerName);
-    return this;
-  }
-
-  public Remittance invoiceNumber(String invoiceNumber) {
-    setInvoiceNumber(invoiceNumber);
-    return this;
-  }
-
-  public Remittance paymentAmount(double paymentAmount) {
-    setPaymentAmount(paymentAmount);
-    return this;
-  }
-
-  public Remittance lockBoxNumber(String lockBoxNumber) {
-    setLockBoxNumber(lockBoxNumber);
-    return this;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof Remittance)) {
-      return false;
-    }
-    Remittance remittance = (Remittance) o;
-    return Objects.equals(remittanceHeaderId, remittance.remittanceHeaderId)
-        && Objects.equals(customerName, remittance.customerName)
-        && Objects.equals(invoiceNumber, remittance.invoiceNumber) && paymentAmount == remittance.paymentAmount
-        && Objects.equals(lockBoxNumber, remittance.lockBoxNumber);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(remittanceHeaderId, customerName, invoiceNumber, paymentAmount, lockBoxNumber);
+  public void setpaymentId(String paymentId) {
+    this.paymentId = paymentId;
   }
 
   @Override
@@ -113,7 +70,7 @@ public class Remittance {
         ", customerName='" + getCustomerName() + "'" +
         ", invoiceNumber='" + getInvoiceNumber() + "'" +
         ", paymentAmount='" + getPaymentAmount() + "'" +
-        ", lockBoxNumber='" + getLockBoxNumber() + "'" +
+        ", paymentId='" + getpaymentId() + "'" +
         "}";
   }
 
