@@ -1,22 +1,26 @@
 package com.prmatch.link.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Payment {
 
   private String paymentHdrId;
-  private double paymentAmount;
+  private List<Double> paymentAmount;
   private Date paymentDate;
   private String paymentType;
   private String customerName;
+  private String senderAccountNumber;
 
   public Payment() {
+    paymentAmount = new ArrayList<>();
   }
 
-  public Payment(String paymentHdrId, double paymentAmount, Date paymentDate, String paymentType, String customerName) {
+  public Payment(String paymentHdrId, List<Double> paymentAmount, Date paymentDate, String paymentType, String customerName) {
     this.paymentHdrId = paymentHdrId;
-    this.paymentAmount = paymentAmount;
+    this.paymentAmount = new ArrayList<>(paymentAmount);
     this.paymentDate = paymentDate;
     this.paymentType = paymentType;
     this.customerName = customerName;
@@ -30,12 +34,12 @@ public class Payment {
     this.paymentHdrId = paymentHdrId;
   }
 
-  public double getPaymentAmount() {
+  public List<Double> getPaymentAmount() {
     return this.paymentAmount;
   }
 
-  public void setPaymentAmount(double paymentAmount) {
-    this.paymentAmount = paymentAmount;
+  public void setPaymentAmount(List<Double> paymentAmount) {
+    this.paymentAmount.addAll((List<Double>)paymentAmount);
   }
 
   public Date getPaymentDate() {
@@ -61,13 +65,18 @@ public class Payment {
   public void setCustomerName(String customerName) {
     this.customerName = customerName;
   }
-
+  public void setSenderAccountNumber(String senderAccountNumber) {
+    this.senderAccountNumber = senderAccountNumber;
+  }
+  public String getSenderAccountNumber(){
+    return senderAccountNumber;
+  }
   public Payment paymentHdrId(String paymentHdrId) {
     setPaymentHdrId(paymentHdrId);
     return this;
   }
 
-  public Payment paymentAmount(double paymentAmount) {
+  public Payment paymentAmount(List<Double> paymentAmount) {
     setPaymentAmount(paymentAmount);
     return this;
   }
@@ -113,6 +122,8 @@ public class Payment {
         ", paymentDate='" + getPaymentDate() + "'" +
         ", paymentType='" + getPaymentType() + "'" +
         ", customerName='" + getCustomerName() + "'" +
+        ", List<Payments>='" + getPaymentAmount().toString()+"'"+
+        ", senderAccountNumber='" + getSenderAccountNumber() + "'"+
         "}";
   }
 
