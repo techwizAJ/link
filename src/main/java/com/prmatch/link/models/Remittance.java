@@ -2,9 +2,14 @@ package com.prmatch.link.models;
 
 import java.util.List;
 
+import com.google.cloud.firestore.annotation.DocumentId;
+
 public class Remittance {
 
-  private String remittanceHeaderId;
+  @DocumentId
+  private String remittanceId;
+
+  private Integer remittanceHeaderId;
   private String customerName;
   private List<String> invoiceNumberList;
   private double paymentAmount;
@@ -13,9 +18,9 @@ public class Remittance {
   public Remittance() {
   }
 
-  public Remittance(String remittanceHeaderId, String customerName, List<String> invoiceNumberList,
-      double paymentAmount,
-      String paymentId) {
+  public Remittance(String remittanceId, Integer remittanceHeaderId, String customerName,
+      List<String> invoiceNumberList, double paymentAmount, String paymentId) {
+    this.remittanceId = remittanceId;
     this.remittanceHeaderId = remittanceHeaderId;
     this.customerName = customerName;
     this.invoiceNumberList = invoiceNumberList;
@@ -23,11 +28,19 @@ public class Remittance {
     this.paymentId = paymentId;
   }
 
-  public String getRemittanceHeaderId() {
+  public String getRemittanceId() {
+    return this.remittanceId;
+  }
+
+  public void setRemittanceId(String remittanceId) {
+    this.remittanceId = remittanceId;
+  }
+
+  public Integer getRemittanceHeaderId() {
     return this.remittanceHeaderId;
   }
 
-  public void setRemittanceHeaderId(String remittanceHeaderId) {
+  public void setRemittanceHeaderId(Integer remittanceHeaderId) {
     this.remittanceHeaderId = remittanceHeaderId;
   }
 
@@ -39,11 +52,11 @@ public class Remittance {
     this.customerName = customerName;
   }
 
-  public List<String> getInvoiceNumber() {
+  public List<String> getInvoiceNumberList() {
     return this.invoiceNumberList;
   }
 
-  public void setInvoiceNumber(List<String> invoiceNumberList) {
+  public void setInvoiceNumberList(List<String> invoiceNumberList) {
     this.invoiceNumberList = invoiceNumberList;
   }
 
@@ -55,23 +68,12 @@ public class Remittance {
     this.paymentAmount = paymentAmount;
   }
 
-  public String getpaymentId() {
+  public String getPaymentId() {
     return this.paymentId;
   }
 
-  public void setpaymentId(String paymentId) {
+  public void setPaymentId(String paymentId) {
     this.paymentId = paymentId;
-  }
-
-  @Override
-  public String toString() {
-    return "{" +
-        " remittanceHeaderId='" + getRemittanceHeaderId() + "'" +
-        ", customerName='" + getCustomerName() + "'" +
-        ", invoiceNumber='" + getInvoiceNumber() + "'" +
-        ", paymentAmount='" + getPaymentAmount() + "'" +
-        ", paymentId='" + getpaymentId() + "'" +
-        "}";
   }
 
 }

@@ -1,8 +1,12 @@
 package com.prmatch.link.models;
 
+import com.google.cloud.firestore.annotation.DocumentId;
+
 public class Customer {
 
+  @DocumentId
   private String customerId;
+
   private String customerName;
   private String address;
   private String city;

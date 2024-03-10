@@ -2,9 +2,13 @@ package com.prmatch.link.models;
 
 import java.util.Objects;
 
+import com.google.cloud.firestore.annotation.DocumentId;
+
 public class RemittanceAdvice {
 
+  @DocumentId
   private String remittanceAdivceId;
+
   private Payment payment;
   private Remittance remittance;
 

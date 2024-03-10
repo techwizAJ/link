@@ -1,9 +1,9 @@
 package com.prmatch.link.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 // Crude on remittances
-@Controller
+@RestController
 public class RemittanceController {
 
 }

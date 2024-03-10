@@ -3,9 +3,13 @@ package com.prmatch.link.models;
 import java.util.Date;
 import java.util.Objects;
 
+import com.google.cloud.firestore.annotation.DocumentId;
+
 public class Invoice {
 
+  @DocumentId
   private String invoiceId;
+
   private String invoiceNumber;
   private Date invoiceDate;
   private boolean isOpen;
