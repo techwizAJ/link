@@ -6,4 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Bai2PaymentParser {
 
+    private void readFile(){
+        String finaName = "/src/main/resources/samplebai2file.bai2";
+
+        
+    }
 }
