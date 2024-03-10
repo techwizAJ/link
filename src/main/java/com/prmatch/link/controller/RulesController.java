@@ -1,9 +1,9 @@
 package com.prmatch.link.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 // Entry point for Payment Remittance Linking
-@Controller
+@RestController
 public class RulesController {
 
 }
