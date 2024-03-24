@@ -5,41 +5,55 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import com.google.cloud.firestore.annotation.DocumentId;
+
 public class Payment {
 
-  private String paymentHdrId;
-  private List<Double> paymentAmount;
+  @DocumentId
+  private String documentId;
+
+  private Integer paymentHdrId;
+  private double paymentAmount;
   private Date paymentDate;
   private String paymentType;
   private String customerName;
   private String senderAccountNumber;
 
   public Payment() {
-    paymentAmount = new ArrayList<>();
   }
 
-  public Payment(String paymentHdrId, List<Double> paymentAmount, Date paymentDate, String paymentType, String customerName) {
+  public Payment(String documentId, Integer paymentHdrId, double paymentAmount, Date paymentDate, String paymentType,
+      String customerName) {
+    this.documentId = documentId;
     this.paymentHdrId = paymentHdrId;
-    this.paymentAmount = new ArrayList<>(paymentAmount);
+    this.paymentAmount = paymentAmount;
     this.paymentDate = paymentDate;
     this.paymentType = paymentType;
     this.customerName = customerName;
   }
 
-  public String getPaymentHdrId() {
+  public String getDocumentId() {
+    return this.documentId;
+  }
+
+  public void setDocumentId(String documentId) {
+    this.documentId = documentId;
+  }
+
+  public Integer getPaymentHdrId() {
     return this.paymentHdrId;
   }
 
-  public void setPaymentHdrId(String paymentHdrId) {
+  public void setPaymentHdrId(Integer paymentHdrId) {
     this.paymentHdrId = paymentHdrId;
   }
 
-  public List<Double> getPaymentAmount() {
+  public Double getPaymentAmount() {
     return this.paymentAmount;
   }
 
-  public void setPaymentAmount(List<Double> paymentAmount) {
-    this.paymentAmount.addAll((List<Double>)paymentAmount);
+  public void setPaymentAmount(Double paymentAmount) {
+    this.paymentAmount = paymentAmount;
   }
 
   public Date getPaymentDate() {
@@ -65,66 +79,13 @@ public class Payment {
   public void setCustomerName(String customerName) {
     this.customerName = customerName;
   }
+
+  public String getSenderAccountNumber() {
+    return this.senderAccountNumber;
+  }
+
   public void setSenderAccountNumber(String senderAccountNumber) {
     this.senderAccountNumber = senderAccountNumber;
-  }
-  public String getSenderAccountNumber(){
-    return senderAccountNumber;
-  }
-  public Payment paymentHdrId(String paymentHdrId) {
-    setPaymentHdrId(paymentHdrId);
-    return this;
-  }
-
-  public Payment paymentAmount(List<Double> paymentAmount) {
-    setPaymentAmount(paymentAmount);
-    return this;
-  }
-
-  public Payment paymentDate(Date paymentDate) {
-    setPaymentDate(paymentDate);
-    return this;
-  }
-
-  public Payment paymentType(String paymentType) {
-    setPaymentType(paymentType);
-    return this;
-  }
-
-  public Payment customerName(String customerName) {
-    setCustomerName(customerName);
-    return this;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof Payment)) {
-      return false;
-    }
-    Payment payment = (Payment) o;
-    return Objects.equals(paymentHdrId, payment.paymentHdrId) && paymentAmount == payment.paymentAmount
-        && Objects.equals(paymentDate, payment.paymentDate) && Objects.equals(paymentType, payment.paymentType)
-        && Objects.equals(customerName, payment.customerName);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(paymentHdrId, paymentAmount, paymentDate, paymentType, customerName);
-  }
-
-  @Override
-  public String toString() {
-    return "{" +
-        " paymentHdrId='" + getPaymentHdrId() + "'" +
-        ", paymentAmount='" + getPaymentAmount() + "'" +
-        ", paymentDate='" + getPaymentDate() + "'" +
-        ", paymentType='" + getPaymentType() + "'" +
-        ", customerName='" + getCustomerName() + "'" +
-        ", List<Payments>='" + getPaymentAmount().toString()+"'"+
-        ", senderAccountNumber='" + getSenderAccountNumber() + "'"+
-        "}";
   }
 
 }

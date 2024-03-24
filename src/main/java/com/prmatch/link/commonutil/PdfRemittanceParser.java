@@ -40,12 +40,12 @@ public class PdfRemittanceParser {
       while (matcher.find()) {
         invoices.add(matcher.group(1));
       }
-      remit.setInvoiceNumber(invoices);
+      remit.setInvoiceNumberList(invoices);
       matcher = getMatcher(text, hdrRegex);
       while (matcher.find()) {
         remit.setCustomerName(matcher.group(4));
         remit.setPaymentAmount(Double.parseDouble(matcher.group(2)));
-        remit.setpaymentId(matcher.group(3));
+        remit.setPaymentId(matcher.group(3));
       }
 
     } catch (Exception e) {
