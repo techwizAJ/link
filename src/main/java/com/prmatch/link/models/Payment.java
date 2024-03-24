@@ -1,6 +1,8 @@
 package com.prmatch.link.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import com.google.cloud.firestore.annotation.DocumentId;
@@ -15,6 +17,7 @@ public class Payment {
   private Date paymentDate;
   private String paymentType;
   private String customerName;
+  private String senderAccountNumber;
 
   public Payment() {
   }
@@ -45,11 +48,11 @@ public class Payment {
     this.paymentHdrId = paymentHdrId;
   }
 
-  public double getPaymentAmount() {
+  public Double getPaymentAmount() {
     return this.paymentAmount;
   }
 
-  public void setPaymentAmount(double paymentAmount) {
+  public void setPaymentAmount(Double paymentAmount) {
     this.paymentAmount = paymentAmount;
   }
 
@@ -75,6 +78,14 @@ public class Payment {
 
   public void setCustomerName(String customerName) {
     this.customerName = customerName;
+  }
+
+  public String getSenderAccountNumber() {
+    return this.senderAccountNumber;
+  }
+
+  public void setSenderAccountNumber(String senderAccountNumber) {
+    this.senderAccountNumber = senderAccountNumber;
   }
 
 }
